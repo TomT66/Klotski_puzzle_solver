@@ -13,7 +13,6 @@ public class State {
 	
 	public void initialBlocks() {
 		Scanner in = new Scanner(System.in);
-		
 		for(int i=0; i<4; i++) {
 			stndblock[i] = new LongStandingBlock();
 			smlblock[i] = new SmallBlock();
