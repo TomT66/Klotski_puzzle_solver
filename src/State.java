@@ -12,6 +12,7 @@ public class State {
 	SmallBlock[] smlblock = new SmallBlock[4];
 	
 	public void initialBlocks() {
+		Scanner in = new Scanner(System.in);
 		for(int i=0; i<4; i++) {
 			stndblock[i] = new LongStandingBlock();
 			smlblock[i] = new SmallBlock();
@@ -28,7 +29,7 @@ public class State {
 		smlblock[2].name = "smallblock3";
 		smlblock[3].name = "smallblock4";
 		
-		Scanner in = new Scanner(System.in);
+
 		
 		System.out.print("set initial X position of bigblock : ");
 		bigblock.positionX = in.nextInt();
