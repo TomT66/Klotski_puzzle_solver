@@ -1,57 +1,48 @@
 import java.util.Scanner;
 
 public class State {
+	int numOfLyblock;
+	int numOfStndblock;
+	int numOfSmlblock;
 	public int[][] map = new int[4][5];
 	public int preStateNr = 0;
 	public int nextStateNr = 0;
-	int totalStates = 0;
 	
 	BigBlock bigblock = new BigBlock();
-	LongLyingBlock lyblock = new LongLyingBlock();
-	LongStandingBlock[] stndblock = new LongStandingBlock[4];
-	SmallBlock[] smlblock = new SmallBlock[4];
+	LongLyingBlock[] lyblock = new LongLyingBlock[10];
+	LongStandingBlock[] stndblock = new LongStandingBlock[10];
+	SmallBlock[] smlblock = new SmallBlock[10];
 	
 	public void initialBlocks() {
 		Scanner in = new Scanner(System.in);
-		for(int i=0; i<4; i++) {
-			stndblock[i] = new LongStandingBlock();
-			smlblock[i] = new SmallBlock();
-		}
 		
-		bigblock.name = "bigblock";
-		lyblock.name = "lyingblock";
-		stndblock[0].name = "standingblock1";
-		stndblock[1].name = "standingblock2";
-		stndblock[2].name = "standingblock3";
-		stndblock[3].name = "standingblock4";
-		smlblock[0].name = "smallblock1";
-		smlblock[1].name = "smallblock2";
-		smlblock[2].name = "smallblock3";
-		smlblock[3].name = "smallblock4";
-		
-
+		System.out.print("input number of lying blocks: ");
+		numOfLyblock = in.nextInt();
+		System.out.print("input number of standing blocks: ");
+		numOfStndblock = in.nextInt();
+		System.out.print("input number of small blocks: ");
+		numOfSmlblock = in.nextInt();		
 		
 		System.out.print("set initial X position of bigblock : ");
 		bigblock.positionX = in.nextInt();
 		System.out.print("set initial Y position of bigblock : ");
 		bigblock.positionY = in.nextInt();
-		
-		System.out.print("set initial X position of lyingblock : ");
-		lyblock.positionX = in.nextInt();
-		System.out.print("set initial Y position of lyingblock : ");
-		lyblock.positionY = in.nextInt();
-		
-		for(int i = 0; i<4; i++) {
-			System.out.print("set initial X position of " + stndblock[i].name + " :");
+		for(int i=0; i<numOfLyblock; i++) {
+			System.out.println("set initial X position of lying block" + (i+1) +" :");
+			lyblock[i].positionX = in.nextInt();
+			System.out.println("set initial Y position of lying block" + (i+1) +" :");
+			lyblock[i].positionY = in.nextInt();
+		}
+		for(int i = 0; i<numOfStndblock; i++) {
+			System.out.print("set initial X position of stndblock" + (i+1) + " :");
 			stndblock[i].positionX = in.nextInt();
-			System.out.print("set initial Y position of " + stndblock[i].name + " :");
+			System.out.print("set initial Y position of stndblock" + (i+1) + " :");
 			stndblock[i].positionY = in.nextInt();
 		}
-
-		for(int i=0; i<4; i++) {
-			System.out.print("set initial X position of " + smlblock[i].name + " :");
+		for(int i=0; i<numOfSmlblock; i++) {
+			System.out.print("set initial X position of smlblock" + (i+1) + " :");
 			smlblock[i].positionX = in.nextInt();
-			System.out.print("set initial Y position of " + smlblock[i].name + " :");
+			System.out.print("set initial Y position of smlblock" + (i+1) + " :");
 			smlblock[i].positionY = in.nextInt();
 		}
 		in.close();
@@ -67,24 +58,17 @@ public class State {
 		map[bigblock.positionX][bigblock.positionY+1] = 1;
 		map[bigblock.positionX+1][bigblock.positionY] = 1;
 		map[bigblock.positionX+1][bigblock.positionY+1] = 1;
-		
-		map[lyblock.positionX][lyblock.positionY] = 2;
-		map[lyblock.positionX+1][lyblock.positionY] = 2;
-		
-		map[stndblock[0].positionX][stndblock[0].positionY] = 3;
-		map[stndblock[0].positionX][stndblock[0].positionY+1] = 3;
-		map[stndblock[1].positionX][stndblock[1].positionY] = 3;
-		map[stndblock[1].positionX][stndblock[1].positionY+1] = 3;
-		map[stndblock[2].positionX][stndblock[2].positionY] = 3;
-		map[stndblock[2].positionX][stndblock[2].positionY+1] = 3;
-		map[stndblock[3].positionX][stndblock[3].positionY] = 3;
-		map[stndblock[3].positionX][stndblock[3].positionY+1] = 3;
-		
-		map[smlblock[0].positionX][smlblock[0].positionY] = 4;
-		map[smlblock[1].positionX][smlblock[1].positionY] = 4;
-		map[smlblock[2].positionX][smlblock[2].positionY] = 4;
-		map[smlblock[3].positionX][smlblock[3].positionY] = 4;
-		
+		for(int i=0; i<numOfLyblock; i++) {
+			map[lyblock[i].positionX][lyblock[i].positionY] = 2;
+			map[lyblock[i].positionX+1][lyblock[i].positionY] = 2;
+		}
+		for(int i=0; i<numOfStndblock; i++) {
+			map[stndblock[i].positionX][stndblock[i].positionY] = 3;
+			map[stndblock[i].positionX][stndblock[i].positionY+1] = 3;
+		}
+		for(int i=0; i<numOfSmlblock; i++) {
+			map[smlblock[i].positionX][smlblock[i].positionY] = 4;
+		}
 		return map;
 	}
 	
@@ -95,20 +79,25 @@ public class State {
 	}
 	
 	public void assign(State targetState) {		
-		targetState.bigblock.name = bigblock.name;
+		targetState.numOfLyblock = numOfLyblock;
+		targetState.numOfSmlblock = numOfSmlblock;
+		targetState.numOfStndblock = numOfStndblock;
+		
+		//targetState.bigblock.name = bigblock.name;
 		targetState.bigblock.positionX = bigblock.positionX;
 		targetState.bigblock.positionY = bigblock.positionY;
+		for(int i=0; i<numOfLyblock; i++) {
+			targetState.lyblock[i].positionX = lyblock[i].positionX;
+			targetState.lyblock[i].positionY = lyblock[i].positionY;
+		}
 		
-		targetState.lyblock.name = lyblock.name;
-		targetState.lyblock.positionX = lyblock.positionX;
-		targetState.lyblock.positionY = lyblock.positionY;
-		
-		for(int i=0;i<4;i++) {
-			targetState.smlblock[i].name = smlblock[i].name;
+		for(int i=0; i<numOfSmlblock; i++) {
+			//targetState.smlblock[i].name = smlblock[i].name;
 			targetState.smlblock[i].positionX = smlblock[i].positionX;
 			targetState.smlblock[i].positionY = smlblock[i].positionY;
-			
-			targetState.stndblock[i].name = stndblock[i].name;
+		}
+		for(int i=0; i<numOfStndblock; i++) {
+			//targetState.stndblock[i].name = stndblock[i].name;
 			targetState.stndblock[i].positionX = stndblock[i].positionX;
 			targetState.stndblock[i].positionY = stndblock[i].positionY;
 		}
