@@ -2,15 +2,13 @@ public class Solver {
 
 	public static void main(String[] args) {
 		int flag = 2;
-		State[] state = new State[50000];
-		for(int i=0; i<50000; i++) {
-			state[i] = new State();
-			for(int j=0; j<10; j++) {
-				state[i].lyblock[j] = new LongLyingBlock();
-				state[i].smlblock[j] = new SmallBlock();
-				state[i].stndblock[j] = new LongStandingBlock();
-			}
-		}
+		State[] state = new State[100000];
+		state[0] = new State();
+	/*	for(int j=0; j<10; j++) {
+			state[0].lyblock[j] = new LongLyingBlock();
+			state[0].smlblock[j] = new SmallBlock();
+			state[0].stndblock[j] = new LongStandingBlock();
+		}*/
 		State temp = new State();
 		for(int i=0; i<10; i++) {
 			temp.lyblock[i] = new LongLyingBlock();
@@ -35,7 +33,8 @@ public class Solver {
 								}
 							}
 							if(flag != 0) {
-								state[i].assign(state[++stateNr]);
+								state[++stateNr] = new State();
+								state[i].assign(state[stateNr]);
 								state[stateNr].bigblock.moveUp();
 								
 								state[stateNr].setMap();
@@ -53,7 +52,8 @@ public class Solver {
 								}
 							}
 							if(flag != 0) {
-								state[i].assign(state[++stateNr]);
+								state[++stateNr] = new State();
+								state[i].assign(state[stateNr]);
 								state[stateNr].bigblock.moveDown();
 								
 								state[stateNr].setMap();
@@ -70,7 +70,8 @@ public class Solver {
 								}
 							}
 							if(flag != 0) {
-								state[i].assign(state[++stateNr]);
+								state[++stateNr] = new State();
+								state[i].assign(state[stateNr]);
 								state[stateNr].bigblock.moveRight();
 							
 								state[stateNr].setMap();
@@ -87,7 +88,8 @@ public class Solver {
 								}
 							}
 							if(flag != 0) {
-								state[i].assign(state[++stateNr]);
+								state[++stateNr] = new State();
+								state[i].assign(state[stateNr]);
 								state[stateNr].bigblock.moveLeft();
 								
 								state[stateNr].setMap();
@@ -108,7 +110,8 @@ public class Solver {
 									}
 								}
 								if(flag != 0) {
-									state[i].assign(state[++stateNr]);
+									state[++stateNr] = new State();
+									state[i].assign(state[stateNr]);
 									state[stateNr].lyblock[id].moveUp();
 									
 									state[stateNr].setMap();
@@ -125,7 +128,8 @@ public class Solver {
 									}
 								}
 								if(flag != 0) {
-									state[i].assign(state[++stateNr]);
+									state[++stateNr] = new State();
+									state[i].assign(state[stateNr]);
 									state[stateNr].lyblock[id].moveDown();
 									
 									state[stateNr].setMap();
@@ -144,7 +148,8 @@ public class Solver {
 						}
 					}
 					if(flag != 0) {
-						state[i].assign(state[++stateNr]);
+						state[++stateNr] = new State();
+						state[i].assign(state[stateNr]);
 						state[stateNr].lyblock[id].moveRight();
 					
 						state[stateNr].setMap();
@@ -162,7 +167,8 @@ public class Solver {
 						}
 					}
 					if(flag != 0) {
-						state[i].assign(state[++stateNr]);
+						state[++stateNr] = new State();
+						state[i].assign(state[stateNr]);
 						state[stateNr].lyblock[id].moveLeft();
 						
 						state[stateNr].setMap();
@@ -184,7 +190,8 @@ public class Solver {
 									}
 								}
 								if(flag != 0) {
-									state[i].assign(state[++stateNr]);
+									state[++stateNr] = new State();
+									state[i].assign(state[stateNr]);
 									state[stateNr].stndblock[id].moveLeft();
 									
 									state[stateNr].setMap();
@@ -201,7 +208,8 @@ public class Solver {
 									}
 								}
 								if(flag != 0) {
-									state[i].assign(state[++stateNr]);
+									state[++stateNr] = new State();
+									state[i].assign(state[stateNr]);
 									state[stateNr].stndblock[id].moveRight();
 									
 									state[stateNr].setMap();
@@ -220,7 +228,8 @@ public class Solver {
 						}
 					}
 					if(flag != 0) {
-						state[i].assign(state[++stateNr]);
+						state[++stateNr] = new State();
+						state[i].assign(state[stateNr]);
 						state[stateNr].stndblock[id].moveUp();
 						
 						state[stateNr].setMap();
@@ -238,7 +247,8 @@ public class Solver {
 						}
 					}
 					if(flag != 0) {
-						state[i].assign(state[++stateNr]);
+						state[++stateNr] = new State();
+						state[i].assign(state[stateNr]);
 						state[stateNr].stndblock[id].moveDown();
 						
 						state[stateNr].setMap();
@@ -259,7 +269,8 @@ public class Solver {
 						}
 					}
 					if(flag != 0) {
-						state[i].assign(state[++stateNr]);
+						state[++stateNr] = new State();
+						state[i].assign(state[stateNr]);
 						state[stateNr].smlblock[id].moveUp();
 						
 						state[stateNr].setMap();
@@ -277,7 +288,8 @@ public class Solver {
 						}
 					}
 					if(flag != 0) {
-						state[i].assign(state[++stateNr]);
+						state[++stateNr] = new State();
+						state[i].assign(state[stateNr]);
 						state[stateNr].smlblock[id].moveDown();
 						
 						state[stateNr].setMap();
@@ -295,7 +307,8 @@ public class Solver {
 						}
 					}
 					if(flag != 0) {
-						state[i].assign(state[++stateNr]);
+						state[++stateNr] = new State();
+						state[i].assign(state[stateNr]);
 						state[stateNr].smlblock[id].moveRight();
 						
 						state[stateNr].setMap();
@@ -313,7 +326,8 @@ public class Solver {
 						}
 					}
 					if(flag != 0) {
-						state[i].assign(state[++stateNr]);
+						state[++stateNr] = new State();
+						state[i].assign(state[stateNr]);
 						state[stateNr].smlblock[id].moveLeft();
 						
 						state[stateNr].setMap();

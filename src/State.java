@@ -23,23 +23,28 @@ public class State {
 		System.out.print("input number of small blocks: ");
 		numOfSmlblock = in.nextInt();		
 		
+		bigblock = new BigBlock();
 		System.out.print("set initial X position of bigblock : ");
 		bigblock.positionX = in.nextInt();
 		System.out.print("set initial Y position of bigblock : ");
 		bigblock.positionY = in.nextInt();
+		
 		for(int i=0; i<numOfLyblock; i++) {
-			System.out.println("set initial X position of lying block" + (i+1) +" :");
+			lyblock[i] = new LongLyingBlock();
+			System.out.print("set initial X position of lying block" + (i+1) +" :");
 			lyblock[i].positionX = in.nextInt();
-			System.out.println("set initial Y position of lying block" + (i+1) +" :");
+			System.out.print("set initial Y position of lying block" + (i+1) +" :");
 			lyblock[i].positionY = in.nextInt();
 		}
 		for(int i = 0; i<numOfStndblock; i++) {
+			stndblock[i] = new LongStandingBlock();
 			System.out.print("set initial X position of stndblock" + (i+1) + " :");
 			stndblock[i].positionX = in.nextInt();
 			System.out.print("set initial Y position of stndblock" + (i+1) + " :");
 			stndblock[i].positionY = in.nextInt();
 		}
 		for(int i=0; i<numOfSmlblock; i++) {
+			smlblock[i] = new SmallBlock();
 			System.out.print("set initial X position of smlblock" + (i+1) + " :");
 			smlblock[i].positionX = in.nextInt();
 			System.out.print("set initial Y position of smlblock" + (i+1) + " :");
@@ -87,17 +92,18 @@ public class State {
 		targetState.bigblock.positionX = bigblock.positionX;
 		targetState.bigblock.positionY = bigblock.positionY;
 		for(int i=0; i<numOfLyblock; i++) {
+			targetState.lyblock[i] = new LongLyingBlock();
 			targetState.lyblock[i].positionX = lyblock[i].positionX;
 			targetState.lyblock[i].positionY = lyblock[i].positionY;
 		}
 		
 		for(int i=0; i<numOfSmlblock; i++) {
-			//targetState.smlblock[i].name = smlblock[i].name;
+			targetState.smlblock[i] = new SmallBlock();
 			targetState.smlblock[i].positionX = smlblock[i].positionX;
 			targetState.smlblock[i].positionY = smlblock[i].positionY;
 		}
 		for(int i=0; i<numOfStndblock; i++) {
-			//targetState.stndblock[i].name = stndblock[i].name;
+			targetState.stndblock[i] = new LongStandingBlock();
 			targetState.stndblock[i].positionX = stndblock[i].positionX;
 			targetState.stndblock[i].positionY = stndblock[i].positionY;
 		}
