@@ -8,7 +8,7 @@ public class Solver {
 			state[0].lyblock[j] = new LongLyingBlock();
 			state[0].smlblock[j] = new SmallBlock();
 			state[0].stndblock[j] = new LongStandingBlock();
-		}*/
+		}  */
 		State temp = new State();
 		for(int i=0; i<10; i++) {
 			temp.lyblock[i] = new LongLyingBlock();
