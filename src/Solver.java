@@ -4,11 +4,7 @@ public class Solver {
 		int flag = 2;
 		State[] state = new State[100000];
 		state[0] = new State();
-	/*	for(int j=0; j<10; j++) {
-			state[0].lyblock[j] = new LongLyingBlock();
-			state[0].smlblock[j] = new SmallBlock();
-			state[0].stndblock[j] = new LongStandingBlock();
-		}  */
+ 
 		State temp = new State();
 		for(int i=0; i<10; i++) {
 			temp.lyblock[i] = new LongLyingBlock();
@@ -18,7 +14,7 @@ public class Solver {
 		int stateNr = 0;
 		state[0].initialBlocks();
 		state[0].setMap();
-
+		System.out.println("start solving");
 		for(int i=0; i<50000; i++) {
 			if(flag ==3) break;
 			//bigblock move posibility
@@ -353,9 +349,8 @@ public class Solver {
 					step++;
 					state[0].showStateMap();
 					flag = 3;
-					System.out.println(i);
 					System.out.println("solved after "+step+" steps");
-					System.out.println(i);
+					System.out.println(i + "states searched!");
 					break;
 				}
 			}
