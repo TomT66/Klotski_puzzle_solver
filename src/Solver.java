@@ -6,11 +6,6 @@ public class Solver {
 		state[0] = new State();
  
 		State temp = new State();
-		for(int i=0; i<10; i++) {
-			temp.lyblock[i] = new LongLyingBlock();
-			temp.stndblock[i] = new LongStandingBlock();
-			temp.smlblock[i] = new SmallBlock();
-		}
 		int stateNr = 0;
 		state[0].initialBlocks();
 		state[0].setMap();
