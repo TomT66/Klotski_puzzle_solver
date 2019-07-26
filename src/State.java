@@ -107,7 +107,7 @@ public class State {
 			targetState.stndblock[i].positionX = stndblock[i].positionX;
 			targetState.stndblock[i].positionY = stndblock[i].positionY;
 		}
-		targetState.setMap();
+		//targetState.setMap();
 	}
 	public int mapEqual(State existState) {
 		int exst = 1;
