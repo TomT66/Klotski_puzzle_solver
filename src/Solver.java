@@ -10,6 +10,7 @@ public class Solver {
 		state[0].initialBlocks();
 		state[0].setMap();
 		System.out.println("start solving");
+		long start_time = System.currentTimeMillis();
 		for(int i=0; i<50000; i++) {
 			if(flag ==3) break;
 			//bigblock move posibility
@@ -351,5 +352,7 @@ public class Solver {
 			}
 		}
 		System.out.println("finish");
+		long end_time = System.currentTimeMillis();
+		System.out.println(end_time-start_time);
 	}
 }
