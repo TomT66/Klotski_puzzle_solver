@@ -48,7 +48,7 @@ public class State {
 		}
 	}
 	
-	public int[][] setMap() {
+	public void setMap() {
 		for(int i=0; i<4; i++) {
 			for (int j=0; j<5; j++) {
 				map[i][j]=0;
@@ -69,7 +69,6 @@ public class State {
 		for(int i=0; i<numOfSmlblock; i++) {
 			map[smlblock[i].positionX][smlblock[i].positionY] = 4;
 		}
-		return map;
 	}
 	
 	public void showStateMap() {
@@ -126,5 +125,4 @@ public class State {
 		}
 		return result;
 	}
-	
 }

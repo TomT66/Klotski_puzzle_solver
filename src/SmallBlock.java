@@ -1,31 +1,27 @@
 
 public class SmallBlock extends Block{
 	public String upDetector(int[][] map) {
-		String result = new String();
 		if(positionY!=0 && map[positionX][positionY-1] == 0) {
-			result = "up";
+			return "up";
 		}
-		return result;
+		return null;
 	}
 	public String downDetector(int[][] map) {
-		String result = new String();
 		if(positionY!=4 && map[positionX][positionY+1] == 0) {
-			result ="down";
+			return "down";
 		}
-		return result;
+		return null;
 	}
 	public String leftDetector(int[][] map) {
-		String result = new String();
 		if(positionX!=0 && map[positionX-1][positionY] == 0) {
-			result = "left";
+			return "left";
 		}
-		return result;
+		return null;
 	}
 	public String rightDetector(int[][] map) {
-		String result = new String();
 		if(positionX!=3 && map[positionX+1][positionY] == 0) {
-			result = "right";
+			return "right";
 		}
-		return result;
+		return null;
 	}
 }

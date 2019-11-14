@@ -1,6 +1,5 @@
 
 public class Block {
-	String name = new String();
 	int positionX;
 	int positionY;
 	
