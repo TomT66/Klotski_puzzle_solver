@@ -13,6 +13,6 @@ public class BigBlock extends Block {
 		else if(positionY!=3 && map[positionX][positionY+2] == 0 && map[positionX+1][positionY+2] == 0) {
 			return "down";
 		}
-		return null;
+		return "";
 	}
 }

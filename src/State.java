@@ -125,4 +125,26 @@ public class State {
 		}
 		return result;
 	}
+	
+	public int[] mapToIntArray() {
+		int[] result = new int[20];
+		for(int i=0 ; i<20 ; i++) {
+			if(i < 4) {
+				result[i] = this.map[i][0];
+			}
+			if(i >= 4 && i < 8) {
+				result[i] = this.map[i%4][1];
+			}
+			if(i >= 8 && i < 12) {
+				result[i] = this.map[i%8][2];
+			}
+			if(i >= 12 && i < 16) {
+				result[i] = this.map[i%12][3];
+			}
+			if(i >= 16 && i < 20) {
+				result[i] = this.map[i%16][4];
+			}
+		}
+		return result;
+	}
 }
