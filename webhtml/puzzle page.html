@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> klotski puzzle solver</title>
+<script>
+
+var testState = [3,1,1,3,3,1,1,3,3,2,2,3,3,4,4,3,4,0,0,4];
+var statesFromServer = [];
+
+function reSet(){
+	for(var i = 0 ; i < 20 ; i++){
+		document.getElementById('slot' + i).innerHTML = '0';
+	}
+}
+
+function inputForSolver(){
+var result  = new Array();
+for(var i = 0; i < 20 ; i++){
+	result[i] = document.getElementById('slot' + i).innerHTML;
+}
+return result;
+}
+
+function showState(slots){
+	for(var i = 0 ; i < 20 ; i++){
+		document.getElementById('slot' + i).innerHTML=slots[i];
+	}
+}
+
+function getInputPuzzle(){
+	var stateInArray = new Array();
+	for(var i = 0 ; i < 20 ; i++){
+		stateInArray.push(document.getElementById('slot' + i).innerHTML);
+	}
+	document.getElementById("testP").innerHTML = stateInArray;
+	return stateInArray;
+}
+
+function allowDrop(ev) {
+    ev.preventDefault();
+}
+
+function drag(ev){
+    ev.dataTransfer.setData("Text", ev.target.id);
+}
+
+function drop(ev){
+    ev.preventDefault();
+    var data = ev.dataTransfer.getData("Text");
+    ev.target.appendChild(document.getElementById(data).cloneNode());
+}
+
+</script>
+</head>
+<body>
+
+<button type="button" onclick="reSet()">reset</button>
+
+<button type="button" onclick="getInputPuzzle()">test show map array</button>
+<br />
+<br />
+<button type="button" onclick="showState(testState)">next step</button>
+<button type="button" onclick="showState(slots)">previous step</button>
+<p id="testP">ohoh</p>
+
+<table id="map" border="1" cellpadding="20" ondrop="drop(event)" ondragover="allowDrop(event)">
+<tr>
+<td id='slot0' contenteditable="true"></td>
+<td id='slot1' contenteditable="true"></td>
+<td id='slot2' contenteditable="true"></td>
+<td id='slot3' contenteditable="true"></td>
+</tr>
+<tr>
+<td id='slot4' contenteditable="true"></td>
+<td id='slot5' contenteditable="true"></td>
+<td id='slot6' contenteditable="true"></td>
+<td id='slot7' contenteditable="true"></td>
+</tr>
+<tr>
+<td id='slot8' contenteditable="true"></td>
+<td id='slot9' contenteditable="true"></td>
+<td id='slot10' contenteditable="true"></td>
+<td id='slot11' contenteditable="true"></td>
+</tr>
+<tr>
+<td id='slot12' contenteditable="true"></td>
+<td id='slot13' contenteditable="true"></td>
+<td id='slot14' contenteditable="true"></td>
+<td id='slot15' contenteditable="true"></td>
+</tr>
+<tr>
+<td id='slot16' contenteditable="true"></td>
+<td id='slot17' contenteditable="true"></td>
+<td id='slot18' contenteditable="true"></td>
+<td id='slot19' contenteditable="true"></td>
+</tr>
+</table>
+
+<br />
+
+<p style="display:inline">big block: </p>
+<table id="bigblock" draggable="true" border="0" cellpadding="20" style="display:inline">
+<tr>
+<td bgcolor='red'>1</td>
+<td bgcolor='red'>1</td>
+</tr>
+<tr>
+<td bgcolor='red'>1</td>
+<td bgcolor='red'>1</td>
+</tr>
+</table>
+
+<p style="display:inline">long standing block: </p>
+<table id="stnblock" draggable="true" border="0" cellpadding="20" style="display:inline">
+<tr>
+<td bgcolor='gray'>3</td>
+</tr>
+<tr>
+<td bgcolor='gray'>3</td>
+</tr>
+</table>
+
+<p style="display:inline">long lying block: </p>
+<table id="lyblock" draggable="true" border="0" cellpadding="20" style="display:inline">
+<tr>
+<td bgcolor='green'>2</td>
+<td bgcolor='green'>2</td>
+</tr>
+</table>
+
+<p style="display:inline">small block: </p>
+<table id="smlblock" draggable="true" border="0" cellpadding="20" style="display:inline">
+<tr>
+<td id="aa" ondragstart="drag(event)" draggable="true" bgcolor='yellow'>4</td>
+</tr>
+</table>
+
+
+</body>
+
+</html>
